@@ -3,7 +3,7 @@ import colors from "colors";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
 import dotenv from "dotenv";
-// import authRoutes from "./routes/authRoute.js"
+import authRoutes from "./routes/authRoute.js"
 
 //configure env
 dotenv.config();  //.env file it is root folder so not need to define path,it automatically get connect to .env file
@@ -21,7 +21,7 @@ app.use(morgan('dev'))
 
 
 //routes
-// app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/', authRoutes);
 
 //rest api
 app.get('/', (req, res) => {

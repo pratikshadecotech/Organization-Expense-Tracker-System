@@ -1,18 +1,16 @@
 import express from "express"
-import userModel from "../Model/userModel.js";
-// import bcrypt from "bcrypt"
-import { hashPassword, comparePassword } from "../../Helper/authHelper.js";
+import userModel from "../models/userModel.js";
+import { hashPassword, comparePassword } from "../helper/authHelper.js"
+import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken";
 import crypto from 'crypto';
-
 
 // JWT Secret Key
 const JWT_SECRET = "gvggcfcfxxxxfgggfxfgx";
 
 export const createUser = async (req, res) => {
     try {
-        const { name, lastname, email, password } = req.body;
-
+        const { name, lastname, email, password, is_admin } = req.body;
         // Validation
         if (!name) return res.status(400).send("Name is required");
         if (!lastname) return res.status(400).send("Lastname is required");
@@ -26,7 +24,15 @@ export const createUser = async (req, res) => {
         }
 
         // add role
-        role = 'accountant';
+        console.log(is_admin)
+
+        var role = ''
+
+        if (is_admin) {
+            role = 'accountant';
+        } else {
+            role = 'employee';
+        }
 
         // Create a new user
         const hashedPassword = await hashPassword(password);
@@ -56,7 +62,7 @@ export const createUser = async (req, res) => {
 
 
 //Update user details
-export const userUpdateController = async (req, res) => {
+export const userUpdate = async (req, res) => {
     try {
         const { id } = req.params;
         const { name, lastname, email, password } = req.body;
@@ -99,7 +105,7 @@ export const userUpdateController = async (req, res) => {
 }
 
 //Delete user by ID
-export const userDeleteController = async (req, res) => {
+export const userDelete = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -127,7 +133,7 @@ export const userDeleteController = async (req, res) => {
 
 
 //Get single user details by ID
-export const getSingleUserDeleteController = async (req, res) => {
+export const getSingleUserDelete = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -153,7 +159,7 @@ export const getSingleUserDeleteController = async (req, res) => {
 
 
 // get all users 
-export const getUserController = async (req, res) => {
+export const getUser = async (req, res) => {
     try {
         const getUser = await userModel.find({})
         if (!users || users.length === 0) {
@@ -174,7 +180,7 @@ export const getUserController = async (req, res) => {
 
 
 // User login controller
-export const userLoginController = async (req, res) => {
+export const userLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
 

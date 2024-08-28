@@ -1,25 +1,34 @@
 import express from "express"
-import { requireSignIn } from "../middlewares/authSignin.js"
-import { getProductByIdController, getProductsController, productController } from "../Controllers/ProductController.js";
-import formidable from "express-formidable"
 
-import { createUser, userLoginController } from "../Controllers/authController.js"
-import { userUpdateController } from "../Controllers/authController.js"
-import { userDeleteController } from "../Controllers/authController.js"
-import { getSingleUserDeleteController } from "../Controllers/authController.js"
-import { getUserController } from "../Controllers/authController.js"
+import { userLogin, createUser, userUpdate, userDelete, getSingleUserDelete, getUser } from "../controllers/userController.js"
+import { requireSignIn } from "../middlewares/authSignin.js"
+import { createExpense } from "../controllers/expenseController.js"
+import { createIncome } from "../controllers/incomeController.js"
 
 const router = express.Router();
 
 //route of User API
 
-router.post('/login', userLoginController)
+router.post('/login', userLogin)
 
+//added middleware requiresignin
+
+
+//user registration
 router.post('/register', requireSignIn, createUser)
-router.put('/update-user/:id', userUpdateController)
-router.delete('/delete-user/:id', userDeleteController)
-router.get('/user/:id', getSingleUserDeleteController)
-router.get('/users', getUserController)
+router.put('/update-user/:id', userUpdate)
+router.delete('/delete-user/:id', userDelete)
+router.get('/user/:id', getSingleUserDelete)
+router.get('/users', getUser)
+
+
+//expenses
+router.post('/add-expense', requireSignIn, createExpense)
+router.get('/users', getUser)
+
+
+//incomes
+router.post('/add-income', requireSignIn, createIncome)
 
 
 export default router;
