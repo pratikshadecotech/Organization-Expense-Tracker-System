@@ -29,4 +29,23 @@ export const createIncome = async (req, res) => {
         console.log(`Error in API: ${error}`);
         res.status(500).send("Internal server error");
     }
-};
+}
+
+// get all incomes
+export const getIncomes = async (req, res) => {
+    try {
+        const incomes = await incomeModel.find({})
+        if (!incomes || incomes.length === 0) {
+            res.status(404).send("incomes not found")
+        }
+        res.status(500).send({
+            status: 'success',
+            message: "get all incomes details successfully",
+            incomes,
+        })
+    }
+    catch (error) {
+        console.log(`error in api ${error}`);
+        res.status(200).send('internal server error')
+    }
+}

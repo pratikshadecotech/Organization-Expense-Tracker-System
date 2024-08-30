@@ -29,4 +29,24 @@ export const createExpense = async (req, res) => {
         console.log(`Error in API: ${error}`);
         res.status(500).send("Internal server error");
     }
-};
+}
+
+
+// get all expenses
+export const getExpenses = async (req, res) => {
+    try {
+        const getExpenses = await expenseModel.find({})
+        if (!getExpenses || getExpenses.length === 0) {
+            res.status(404).send("expenses not found")
+        }
+        res.status(500).send({
+            status: 'success',
+            message: "get all expenses details successfully",
+            getExpenses,
+        })
+    }
+    catch (error) {
+        console.log(`error in api ${error}`);
+        res.status(200).send('internal server error')
+    }
+}

@@ -2,8 +2,8 @@ import express from "express"
 
 import { userLogin, createUser, userUpdate, userDelete, getSingleUserDelete, getUser } from "../controllers/userController.js"
 import { requireSignIn } from "../middlewares/authSignin.js"
-import { createExpense } from "../controllers/expenseController.js"
-import { createIncome } from "../controllers/incomeController.js"
+import { createExpense, getExpenses } from "../controllers/expenseController.js"
+import { createIncome, getIncomes } from "../controllers/incomeController.js"
 
 const router = express.Router();
 
@@ -24,11 +24,12 @@ router.get('/users', getUser)
 
 //expenses
 router.post('/add-expense', requireSignIn, createExpense)
-router.get('/users', getUser)
+router.get('/expenses', getExpenses)
 
 
 //incomes
 router.post('/add-income', requireSignIn, createIncome)
+router.get('/incomes', getIncomes)
 
 
 export default router;

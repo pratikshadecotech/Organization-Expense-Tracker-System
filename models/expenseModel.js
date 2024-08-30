@@ -6,7 +6,7 @@ const expenseSchema = mongoose.Schema(
             required: true,
         },
         date: {
-            type: Date,
+            type: String,
             required: true,
         },
         category: {
@@ -24,4 +24,4 @@ const expenseSchema = mongoose.Schema(
     }
 );
 
-export default mongoose.model('expenses', userSchema)
+export default mongoose.model('expenses', expenseSchema)
