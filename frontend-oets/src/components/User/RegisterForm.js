@@ -7,7 +7,8 @@ const RegistrationForm = () => {
         <>
             <Navbar />
 
-            <div className="form form-register">
+            <div className=" form-register">
+                <div style={{ textAlign: 'center', fontSize: "24px", paddingBottom: '5px' }}>Register Form</div>
                 <div className="form-body form-body-register">
                     <div className="username">
                         <label className="form__label" for="firstName">First Name </label>
@@ -31,9 +32,10 @@ const RegistrationForm = () => {
                     </div>
                 </div>
                 <div class="footer">
-                    <button type="submit" class="btn">Register</button>
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit">Submit</button>
+
                 </div>
-            </div>
+            </div >
 
         </>
     )

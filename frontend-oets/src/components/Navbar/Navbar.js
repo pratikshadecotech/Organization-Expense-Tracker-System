@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Navbar/Navbar.css'
 import Logo from '../../Images/logo2.jfif'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -8,7 +9,10 @@ const Navbar = () => {
             <ul>
                 <img Src={Logo} className='logo'></img>
 
-                <li>Register</li>
+                <li>
+                    <Link to="/register">Register
+                    </Link>
+                </li>
                 <li>Expenses</li>
                 <li>Incomes</li>
                 <li>Feedback</li>

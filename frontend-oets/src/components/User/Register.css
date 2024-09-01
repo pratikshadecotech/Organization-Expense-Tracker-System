@@ -8,18 +8,21 @@ body {
 }
 
 .form-register {
-    background-color: rgb(212, 236, 238);
+    background-color: white;
     border-radius: 5px;
     width: 550px;
     /* margin: 400px auto; */
     padding: 20px;
     /* height: 600px; */
-    margin-top: 66px;
+    margin-top: 56px;
+    margin-left: 379px;
+    margin-bottom: 53px;
+    border: black 1px solid;
 }
 
 .form-body-register {
     text-align: left;
-    padding: 20px 10px;
+
 }
 
 .form-body>* {
