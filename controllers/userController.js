@@ -182,6 +182,7 @@ export const getUser = async (req, res) => {
 // User login controller
 export const userLogin = async (req, res) => {
     try {
+
         const { email, password } = req.body;
 
         // Validation

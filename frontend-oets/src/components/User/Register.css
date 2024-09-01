@@ -1,22 +1,23 @@
 body {
-    background: #bdc3c7;
+    background: white;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: -webkit-linear-gradient(to right, white, white);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: linear-gradient(to right, white, white);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.form {
-    background-color: white;
+.form-register {
+    background-color: rgb(212, 236, 238);
     border-radius: 5px;
     width: 550px;
-    margin: 20px auto;
+    /* margin: 400px auto; */
     padding: 20px;
     /* height: 600px; */
+    margin-top: 66px;
 }
 
-.form-body {
+.form-body-register {
     text-align: left;
     padding: 20px 10px;
 }

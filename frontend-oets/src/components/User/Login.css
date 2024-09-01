@@ -1,0 +1,26 @@
+.login-logo {
+
+    height: 79px;
+
+}
+
+.form {
+    margin-top: -374px;
+
+    background-color: rgba(20, 20, 20, 0.8);
+    /* White with 80% opacity */
+    padding: 20px;
+    border-radius: 8px;
+
+}
+
+.background-img {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Maintain aspect ratio */
+    height: 100vh;
+
+
+
+}
