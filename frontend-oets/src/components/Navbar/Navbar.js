@@ -10,13 +10,25 @@ const Navbar = () => {
                 <img Src={Logo} className='logo'></img>
 
                 <li>
-                    <Link to="/register">Register
+                    <Link to="/register" className="link-no-underline">Register
                     </Link>
                 </li>
-                <li>Expenses</li>
-                <li>Incomes</li>
-                <li>Feedback</li>
-                <li>Logout</li>
+                <li>
+                    <Link to="/expense" className="link-no-underline">Expenses
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/income" className="link-no-underline">Incomes
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/feedback" className="link-no-underline">Feedback
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/logout" className="link-no-underline">Logout
+                    </Link>
+                </li>
 
             </ul>
 

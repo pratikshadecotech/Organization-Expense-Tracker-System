@@ -1,0 +1,35 @@
+/* src/components/ExpenseItem.css */
+
+
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.expense-date {
+    flex: 1;
+}
+
+
+
+
+.expense-description {
+    flex: 2;
+}
+
+.expense-category {
+    flex: 2;
+}
+
+.expense-amount {
+    flex: 1;
+    text-align: right;
+}

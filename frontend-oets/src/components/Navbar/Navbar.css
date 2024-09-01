@@ -30,3 +30,12 @@ div {
     left: 12px;
     object-fit: contain;
  } */
+
+
+.link-no-underline {
+
+    text-decoration: none;
+    /* Removes underline */
+    color: inherit;
+    /* Optional: inherits color from parent element */
+}

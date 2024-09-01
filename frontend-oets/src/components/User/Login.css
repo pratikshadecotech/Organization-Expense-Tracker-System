@@ -17,10 +17,11 @@
 .background-img {
 
     background-repeat: no-repeat;
-    background-size: cover;
+    /* or 'contain' */
+
     /* Maintain aspect ratio */
     height: 100vh;
-
+    /* For better sharpness */
 
 
 }

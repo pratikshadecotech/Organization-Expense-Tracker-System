@@ -38,7 +38,7 @@ export const getIncomes = async (req, res) => {
         if (!incomes || incomes.length === 0) {
             res.status(404).send("incomes not found")
         }
-        res.status(500).send({
+        res.status(200).send({
             status: 'success',
             message: "get all incomes details successfully",
             incomes,
@@ -46,6 +46,6 @@ export const getIncomes = async (req, res) => {
     }
     catch (error) {
         console.log(`error in api ${error}`);
-        res.status(200).send('internal server error')
+        res.status(500).send('internal server error')
     }
 }

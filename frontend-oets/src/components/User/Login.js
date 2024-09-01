@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../User/Login.css'
 import Logo from '../../Images/logo.jfif'
-import backgroundimg from '../../Images/background-img.jpg'
+import backgroundimg from '../../Images/login-logo3.jfif'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
