@@ -219,6 +219,7 @@ export const userLogin = async (req, res) => {
 
         });
     } catch (error) {
+        console.log(error)
         res.status(500).send("Internal server error");
     }
 };

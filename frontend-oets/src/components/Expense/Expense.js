@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../Expense/Expense.css";
 import Navbar from '../Navbar/Navbar.js';
+import { Modal } from 'antd';
 
 const Expense = ({ expense }) => {
+    const [showModal, setShowModal] = useState(false)
 
     const [expenses, setExpenses] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -29,6 +31,9 @@ const Expense = ({ expense }) => {
         <>
 
             <Navbar />
+            <div>
+                <button className='btn btn-primary' onClick={() => setShowModal(true)}>Add New</button>
+            </div>
             <div className="expenses-list">
                 <div className="expense-item" style={{ marginBottom: '10px' }}>
                     <div className="expense-date">Date</div>
@@ -53,6 +58,9 @@ const Expense = ({ expense }) => {
 
             </div>
 
+            <Modal title="Add Expenses" visible={showModal} onCancel={() => setShowModal(false)} footer={false}>
+                <h1>hello</h1>
+            </Modal>
         </>
 
     )
