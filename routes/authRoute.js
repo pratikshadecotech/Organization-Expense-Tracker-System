@@ -23,7 +23,7 @@ router.get('/users', getUser)
 
 
 //expenses
-router.post('/add-expense', requireSignIn, createExpense)
+router.post('/add-expense', createExpense)
 router.get('/expenses', getExpenses)
 
 

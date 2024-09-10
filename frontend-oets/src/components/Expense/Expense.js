@@ -2,10 +2,65 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../Expense/Expense.css";
 import Navbar from '../Navbar/Navbar.js';
-import { Modal } from 'antd';
+import Modal from '../Modal.js'; // Import the Modal component
+import { useNavigate } from 'react-router-dom';
 
 const Expense = ({ expense }) => {
-    const [showModal, setShowModal] = useState(false)
+
+    const navigate = useNavigate();
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [formData, setFormData] = useState({
+        description: '',
+        date: '',
+        category: '',
+        total: ''
+    });
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    //form handling
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Handle form submission logic here
+        try {
+
+            const requestData = new FormData();
+            requestData.append("description", formData.description);
+            requestData.append("date", formData.date);
+            requestData.append("category", formData.category);
+            requestData.append("total", formData.total);
+            console.log(requestData);
+            const response = await axios.post("http://localhost:8080/api/v1/add-expense", requestData, {
+                headers: {
+                    'Content-Type': 'application/json',
+
+                },
+            });
+            console.log('Success:', response.data);
+
+            //clear form inputs
+            setFormData({
+                email: "",
+                password: "",
+            });
+            closeModal();
+            navigate('/expense');
+
+            // Refresh the page (optional, based on your requirement)
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+
+    };
 
     const [expenses, setExpenses] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,7 +87,8 @@ const Expense = ({ expense }) => {
 
             <Navbar />
             <div>
-                <button className='btn btn-primary' onClick={() => setShowModal(true)}>Add New</button>
+                <button className="btn btn-primary" onClick={openModal}>Add Expense</button>
+
             </div>
             <div className="expenses-list">
                 <div className="expense-item" style={{ marginBottom: '10px' }}>
@@ -58,9 +114,57 @@ const Expense = ({ expense }) => {
 
             </div>
 
-            <Modal title="Add Expenses" visible={showModal} onCancel={() => setShowModal(false)} footer={false}>
-                <h1>hello</h1>
-            </Modal>
+            <div>
+
+
+                <Modal isOpen={isModalOpen} onClose={closeModal} >
+                    <h2>Add Expense</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <label>Description</label>
+                            <input
+                                type="text"
+                                name="description"
+                                value={formData.description}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Date</label>
+                            <input
+                                type="date"
+                                name="date"
+                                value={formData.date}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Category</label>
+                            <input
+                                type="text"
+                                name="category"
+                                value={formData.category}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Total</label>
+                            <input
+                                type="number"
+                                name="total"
+                                value={formData.total}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <button className="btn btn-primary" type="submit" style={{ width: '100px', marginLeft: '170px' }}>Submit</button>
+                    </form>
+                </Modal>
+
+            </div >
         </>
 
     )
