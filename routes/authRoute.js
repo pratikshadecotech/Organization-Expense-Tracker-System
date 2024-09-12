@@ -4,8 +4,17 @@ import { userLogin, createUser, userUpdate, userDelete, getSingleUserDelete, get
 import { requireSignIn } from "../middlewares/authSignin.js"
 import { createExpense, getExpenses } from "../controllers/expenseController.js"
 import { createIncome, getIncomes } from "../controllers/incomeController.js"
+import { createFeedback, getFeedbacks } from "../controllers/feedbackController.js"
+
+import {
+    addTransaction,
+    getAllTransaction,
+    editTransaction,
+    deleteTransaction,
+} from "../controllers/transactionController.js";
 
 const router = express.Router();
+
 
 //route of User API
 
@@ -31,5 +40,17 @@ router.get('/expenses', getExpenses)
 router.post('/add-income', requireSignIn, createIncome)
 router.get('/incomes', getIncomes)
 
+// add transaction
+router.post("/add-transection", addTransaction);
+// edit transaction
+router.post("/edit-transection", editTransaction);
+// delete transaction
+router.post("/delete-transection", deleteTransaction);
+//get transaction by id
+router.post("/get-transection", getAllTransaction);
+
+//feedbacks
+router.post('/add-feedback', createFeedback)
+router.get('/feedbacks', getFeedbacks)
 
 export default router;

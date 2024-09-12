@@ -4,34 +4,15 @@
 .expense-item {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
 
 
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 10px;
     margin-bottom: 10px;
     background-color: #f9f9f9;
-}
-
-.expense-date {
-    flex: 1;
-}
-
-
-
-
-.expense-description {
-    flex: 2;
-}
-
-.expense-category {
-    flex: 2;
-}
-
-.expense-amount {
-    flex: 1;
-    text-align: right;
+    padding: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 
@@ -76,4 +57,26 @@ button[type="submit"] {
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
+}
+
+/* styles.css */
+.user-list {
+    padding: 20px;
+}
+
+.user-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-list li {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.user-list h3 {
+    margin: 0;
+    font-size: 1.2rem;
 }

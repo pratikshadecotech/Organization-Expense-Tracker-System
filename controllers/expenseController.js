@@ -1,5 +1,6 @@
 import express from "express"
 import expenseModel from "../models/expenseModel.js"
+import dateFormat from 'date-and-time'
 
 export const createExpense = async (req, res) => {
     try {
@@ -9,6 +10,9 @@ export const createExpense = async (req, res) => {
         if (!date) return res.status(400).send("Date is required");
         if (!category) return res.status(400).send("Category is required");
         if (!total) return res.status(400).send("Total is required");
+
+        // const dateNew = dateFormat.format((new Date(date)),
+        //     'DD-MM-YYYY');
 
         // Add new expense
         const newExpense = await expenseModel.create({

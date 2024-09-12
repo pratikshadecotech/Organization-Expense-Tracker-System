@@ -8,6 +8,7 @@ import Logout from './components/User/Logout.js';
 import Expense from './components/Expense/Expense.js';
 import Income from './components/Income/Income.js';
 import Feedback from './components/Feedback/Feedback.js';
+import HomePage from './components/HomePage/HomePage.js';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<LoginForm />} />
-        <Route path="/home" element={<Navbar />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/expense" element={<Expense />} />

@@ -42,6 +42,8 @@ function LoginForm() {
             console.log('Success:', response.data);
 
             setMessage("user Login Successfully! 😁");
+            localStorage.setItem("user", JSON.stringify({ ...response.user, password: "" }));
+
             navigate('/home');
             //clear form inputs
             setFormData({
@@ -56,7 +58,7 @@ function LoginForm() {
 
     return (
         <>
-            <section style={{ backgroundColor: "#453F78" }}>
+            <section style={{ backgroundColor: "#673ab782" }}>
 
                 <div class="container py-3 ">
                     <div class="row d-flex justify-content-center align-items-center">

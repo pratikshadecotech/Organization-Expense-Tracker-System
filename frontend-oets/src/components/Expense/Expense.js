@@ -91,11 +91,16 @@ const Expense = ({ expense }) => {
 
             </div>
             <div className="expenses-list">
-                <div className="expense-item" style={{ marginBottom: '10px' }}>
+                <div className="expense-item" style={{
+                    marginBottom: '10px', color: '#fff',
+                    backgroundColor: '#ffc107', textAlign: 'center'
+                }}>
                     <div className="expense-date">Date</div>
                     <div className="expense-description">Description</div>
                     <div className="expense-category">Category</div>
                     <div className="expense-amount">Amount</div>
+                    <div className="expense-amount">Action</div>
+
                 </div>
             </div>
             <div className="expenses-list">
@@ -108,7 +113,8 @@ const Expense = ({ expense }) => {
                             <div className="expense-date">{expense.date}</div>
                             <div className="expense-description">{expense.description}</div>
                             <div className="expense-category">{expense.category}</div>
-                            <div className="expense-amount">${expense.total}</div>
+                            <div className="expense-amount">{expense.total}</div>
+                            <div></div>
                         </div>
                     )))}
 

@@ -8,7 +8,10 @@ const Navbar = () => {
         <div className='navbar-section'>
             <ul>
                 <img Src={Logo} className='logo'></img>
-
+                <li>
+                    <Link to="/home" className="link-no-underline">Home
+                    </Link>
+                </li>
                 <li>
                     <Link to="/register" className="link-no-underline">Register
                     </Link>
