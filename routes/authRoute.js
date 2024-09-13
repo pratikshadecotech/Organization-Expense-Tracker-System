@@ -21,7 +21,9 @@ const router = express.Router();
 router.post('/login', userLogin)
 
 //added middleware requiresignin
-
+//feedbacks
+router.post('/add-feedback', createFeedback)
+router.get('/feedbacks', getFeedbacks)
 
 //user registration
 router.post('/register', requireSignIn, createUser)
@@ -49,8 +51,6 @@ router.post("/delete-transection", deleteTransaction);
 //get transaction by id
 router.post("/get-transection", getAllTransaction);
 
-//feedbacks
-router.post('/add-feedback', createFeedback)
-router.get('/feedbacks', getFeedbacks)
+
 
 export default router;

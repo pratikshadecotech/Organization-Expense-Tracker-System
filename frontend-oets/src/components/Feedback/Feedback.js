@@ -21,6 +21,8 @@ const Feedback = ({ expense }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+
+        console.log(formData)
     };
 
     //form handling
@@ -81,15 +83,15 @@ const Feedback = ({ expense }) => {
 
             <Navbar />
             <div>
-                <button className="btn btn-primary" onClick={openModal}>Add Feedback</button>
+                <button className="btn btn-primary" onClick={openModal} style={{ marginLeft: '1141px ' }}>Add Feedback</button>
 
             </div>
             <div className="expenses-list">
-                <div className="expense-item" style={{
+                <div style={{ textAlign: 'center' }} className="expense-item" style={{
                     marginBottom: '10px', color: '#fff',
-                    backgroundColor: '#ffc107', textAlign: 'center'
+                    backgroundColor: '#CDDC39', textAlign: 'center'
                 }}>
-                    <div className="feedback">Feedback</div>
+                    <div style={{ textAlign: 'center' }}>Feedback List</div>
 
                 </div>
             </div>
@@ -101,8 +103,8 @@ const Feedback = ({ expense }) => {
 
                         <div className="expense-item" key={feedback.id} style={{ marginBottom: '10px' }}>
 
-                            <div className="expense-description">{feedback.feedback}</div>
-
+                            <div className="">{feedback.feedback}</div>
+                            <div className="">{feedback.user_id}</div>
                             <div></div>
                         </div>
                     )))}

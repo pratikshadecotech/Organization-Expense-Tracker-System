@@ -4,16 +4,23 @@ import dateFormat from 'date-and-time'
 
 export const createFeedback = async (req, res) => {
     try {
+
         const { feedback } = req.body;
+        console.log(req);
+
         // Validation
         if (!feedback) return res.status(400).send("Feedback is required");
 
+        console.log(feedback)
 
         // Add new feedback
         const newFeedback = await feedbackModel.create({
             feedback,
 
         });
+
+
+        console.log(newFeedback);
 
         res.status(201).send({
             status: "success",
