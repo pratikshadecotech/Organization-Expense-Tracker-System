@@ -9,9 +9,11 @@ import React, { useEffect, useState } from "react";
 import { Form, Input, message, Modal, Select, Table, DatePicker } from "antd";
 import axios from "axios";
 import Navbar from '../Navbar/Navbar.js';
-import Spinner from "../Spinner.js";
 import moment from "moment";
 import Chart from "../Chart.js";
+import Footer from '../Footer/Footer.js';
+
+
 const { RangePicker } = DatePicker;
 
 const HomePage = () => {
@@ -25,7 +27,7 @@ const HomePage = () => {
             title: "Date",
             key: 1,
             dataIndex: "date",
-            render: (text) => <span>{moment(text).format("YYYY-MM-DD")}</span>,
+            render: (text) => <span>{moment(text).format("DD-MM-YYYY")}</span>,
         },
         { key: 2, title: "Amount", dataIndex: "amount" },
         { key: 3, title: "Type", dataIndex: "type" },
@@ -68,7 +70,6 @@ const HomePage = () => {
                 setAllTransection(data.data);
 
                 console.log(allTransection);
-                message.success("transection added successfully");
                 setShowModel(false);
             } catch (error) {
                 message.error("failed to fetch data");
@@ -131,7 +132,7 @@ const HomePage = () => {
             <Navbar />
 
             <div className='content'>
-                {load && <Spinner />}
+                {load}
                 <div style={{ padding: "40px" }} className="color-3 filters text-white">
                     <div>
                         <h1>select frequency</h1>
@@ -194,12 +195,12 @@ const HomePage = () => {
                                 setShowModel(true);
                             }}
                         >
-                            Add new
+                            Add new Transaction
                         </button>
                     </div>
                 </div>
             </div>
-            <div className="content">
+            <div className="content" >
                 {viewData === "table" ? (
                     <Table columns={columns} dataSource={allTransection} />
                 ) : (
@@ -255,6 +256,8 @@ const HomePage = () => {
                     </div>
                 </Form>
             </Modal>
+
+            <Footer />
         </>
     );
 };

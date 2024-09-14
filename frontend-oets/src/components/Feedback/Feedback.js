@@ -4,6 +4,7 @@ import "../Expense/Expense.css";
 import Navbar from '../Navbar/Navbar.js';
 import Modal from '../Modal.js'; // Import the Modal component
 import { useNavigate } from 'react-router-dom';
+import Footer from '../Footer/Footer.js';
 
 const Feedback = ({ expense }) => {
 
@@ -31,9 +32,13 @@ const Feedback = ({ expense }) => {
 
         // Handle form submission logic here
         try {
-
+            const user = JSON.parse(localStorage.getItem("user"));
+            console.log('dfdfsd')
+            console.log(user)
             const requestData = new FormData();
             requestData.append("feedback", formData.feedback);
+            requestData.append("userid", user._id);
+
             console.log(requestData);
             const response = await axios.post("http://localhost:8080/api/v1/add-feedback", requestData, {
                 headers: {
@@ -86,22 +91,22 @@ const Feedback = ({ expense }) => {
                 <button className="btn btn-primary" onClick={openModal} style={{ marginLeft: '1141px ' }}>Add Feedback</button>
 
             </div>
-            <div className="expenses-list">
+            <div class="col-md-6" className="expenses-list">
                 <div style={{ textAlign: 'center' }} className="expense-item" style={{
                     marginBottom: '10px', color: '#fff',
-                    backgroundColor: '#CDDC39', textAlign: 'center'
+                    backgroundColor: '#CDDC39', textAlign: 'center', width: '50%'
                 }}>
                     <div style={{ textAlign: 'center' }}>Feedback List</div>
 
                 </div>
             </div>
-            <div className="expenses-list">
+            <div class="col-md-6" className="expenses-list">
                 {feedbacks.length === 0 ? (
                     <p>No Feedbacks found.</p>
                 ) : (
                     feedbacks.getFeedbacks.map(feedback => (
 
-                        <div className="expense-item" key={feedback.id} style={{ marginBottom: '10px' }}>
+                        <div class="col-md-6" className="expense-item" key={feedback.id} style={{ marginBottom: '10px', width: '50%' }}>
 
                             <div className="">{feedback.feedback}</div>
                             <div className="">{feedback.user_id}</div>
@@ -133,6 +138,8 @@ const Feedback = ({ expense }) => {
                 </Modal>
 
             </div >
+
+            <Footer />
         </>
 
     )

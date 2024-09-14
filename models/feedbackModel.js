@@ -5,6 +5,10 @@ const feedbackSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        userid: {
+            type: String,
+            required: [false, "userID is required"],
+        },
 
     },
     {

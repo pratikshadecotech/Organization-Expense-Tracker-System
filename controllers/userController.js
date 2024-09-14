@@ -64,11 +64,10 @@ export const createUser = async (req, res) => {
 //Update user details
 export const userUpdate = async (req, res) => {
     try {
-        const { id } = req.params;
-        const { name, lastname, email, password } = req.body;
-
+        const { name, lastname, email, password } = req.body.payload;
+        console.log(req.body.payload)
         //check if user exists
-        const user = await userModel.findById(id);
+        const user = await userModel.findById(req.body.transactionId);
 
         if (!user) {
             return res.status(404).send('user not found');
@@ -88,9 +87,14 @@ export const userUpdate = async (req, res) => {
         if (email) user.email = email;
         // if(password) user.password = await hashPassword(password);
         if (password) user.password = (password);
+        const role = 'employee';
+
+
+        user.role = role;
 
         //save updated user
         const updatedUser = await user.save();
+
 
         res.status(200).send({
 
@@ -107,18 +111,9 @@ export const userUpdate = async (req, res) => {
 //Delete user by ID
 export const userDelete = async (req, res) => {
     try {
-        const { id } = req.params;
+        console.log(req.body.transactionId)
+        await userModel.findOneAndDelete({ _id: req.body.transactionId })
 
-        //check if user exists
-        const user = await userModel.findById(id);
-
-        if (!user) {
-            return res.status(404).send('user not found');
-
-        }
-
-        //delete user
-        await userModel.findByIdAndDelete(id);
 
         res.status(200).send({
 
@@ -134,41 +129,42 @@ export const userDelete = async (req, res) => {
 
 //Get single user details by ID
 export const getSingleUserDelete = async (req, res) => {
-    try {
-        const { id } = req.params;
+    // try {
+    //check if user exists
+    console.log("ok")
+    console.log(req.body.transactionId)
 
-        //check if user exists
-        const user = await userModel.findById(id);
+    const user = await userModel.findOne({ _id: req.body.transactionId });
 
-        if (!user) {
-            return res.status(404).send('user not found');
+    if (!user) {
+        return res.status(404).send('user not found');
 
-        }
-
-        res.status(200).send({
-
-            status: "success",
-            message: "user details fetched successflly",
-            user
-        })
-    } catch (error) {
-        console.log(`Error in API:${error}`)
-        res.status(500).send('internal server error')
     }
+
+    res.status(200).send({
+
+        status: "success",
+        message: "user details fetched successflly",
+        user
+    })
+    // } catch (error) {
+    //     console.log(`Error in API:${error}`)
+    //     res.status(500).send('internal server error')
+    // }
 }
 
 
 // get all users 
 export const getUser = async (req, res) => {
     try {
-        const getUser = await userModel.find({})
+        const users = await userModel.find({})
         if (!users || users.length === 0) {
             res.status(404).send("no user found")
         }
-        res.status(500).send({
+        res.status(200).send({
             status: 'success',
             message: "get all users details successfully",
-            getUser,
+            users,
         })
     }
     catch (error) {

@@ -16,14 +16,7 @@ const Navbar = () => {
                     <Link to="/register" className="link-no-underline">Register
                     </Link>
                 </li>
-                <li>
-                    <Link to="/expense" className="link-no-underline">Expenses
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/income" className="link-no-underline">Incomes
-                    </Link>
-                </li>
+
                 <li>
                     <Link to="/feedback" className="link-no-underline">Feedback
                     </Link>

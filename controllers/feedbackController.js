@@ -5,7 +5,7 @@ import dateFormat from 'date-and-time'
 export const createFeedback = async (req, res) => {
     try {
 
-        const { feedback } = req.body;
+        const { feedback, userid } = req.body;
         console.log(req);
 
         // Validation
@@ -16,7 +16,7 @@ export const createFeedback = async (req, res) => {
         // Add new feedback
         const newFeedback = await feedbackModel.create({
             feedback,
-
+            userid
         });
 
 

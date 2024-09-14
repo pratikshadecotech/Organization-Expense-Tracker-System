@@ -26,11 +26,12 @@ router.post('/add-feedback', createFeedback)
 router.get('/feedbacks', getFeedbacks)
 
 //user registration
-router.post('/register', requireSignIn, createUser)
-router.put('/update-user/:id', userUpdate)
-router.delete('/delete-user/:id', userDelete)
-router.get('/user/:id', getSingleUserDelete)
 router.get('/users', getUser)
+
+router.post('/register', createUser)
+router.post('/update-user', userUpdate)
+router.post('/delete-user', userDelete)
+router.post('/user', getSingleUserDelete)
 
 
 //expenses

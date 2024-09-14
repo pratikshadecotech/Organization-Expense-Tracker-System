@@ -37,6 +37,23 @@ body {
     width: 60%;
 }
 
-.footer {
+.footer-btn {
     text-align: center;
+}
+
+/* src/components/ExpenseItem.css */
+
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
